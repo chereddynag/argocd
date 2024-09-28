@@ -67,14 +67,14 @@ pipeline{
                    withCredentials([usernamePassword(credentialsId: 'git_pat', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                    sh """
                          rm -rf argocd
-                         git clone https://github.com/chereddynag/argocd.git
+                         git clone git@github.com:chereddynag/argocd.git main
                          cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
                          git config --global user.name "${GIT_USERNAME}"
                          git config --global user.password "{GIT_PASSWORD}"
-                         git remote set-url origin https://github.com/chereddynag/argocd.git
-                         git push https://github.com/chereddynag/argocd.git main
+                         git remote set-url origin git@github.com:chereddynag/argocd.git
+                         git push git@github.com:chereddynag/argocd.git main
                       """
                    } 
                 }
