@@ -64,7 +64,7 @@ pipeline{
         stage("pushing the changes back to github"){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'git_apt', variable: 'GIT_APT')]) {
+                   withCredentials([string(credentialsId: 'git_pat', variable: 'GIT_APT')]) {
                    sh """
                          rm -rf argocd
                          git clone https://${GIT_APT}@github.com/chereddynag/argocd.git
