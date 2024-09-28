@@ -64,15 +64,15 @@ pipeline{
         stage("pushing the changes back to github"){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'git_pat', variable: 'GIT_APT')]) {
+                   withCredentials([string(credentialsId: 'git_pat', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                    sh """
                          rm -rf argocd
                          git clone https://${GIT_APT}@github.com/chereddynag/argocd.git
                          cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
-                         git config --global user.name "chereddynag"
-                         git config --global user.email "nagarjuna.chereddy@gmail.com"
+                         git config --global user.name "${GIT_USERNAME}"
+                         git config --global user.password "{GIT_PASSWORD}"
                          git remote set-url origin https://github.com/chereddynag/argocd.git
                          git push https://github.com/chereddynag/argocd.git main
                       """
