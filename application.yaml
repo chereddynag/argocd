@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myservice
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chereddynag/myservice.git
+    targetRevision: HEAD
+    path:
+  destination:
+    server:  https://35.230.44.222
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

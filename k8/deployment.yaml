@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocdapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocdapp
+  template:
+    metadata:
+      labels:
+        app: argocdapp
+    spec:
+      containers:
+      - name: argocdapp
+        image: us-west1-docker.pkg.dev/fluted-volt-428205-p7/chereddy/myservice:79
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

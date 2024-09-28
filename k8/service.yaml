@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocdapp-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: argocdapp
+  ports:
+  - port: 80
+    targetPort: 80
