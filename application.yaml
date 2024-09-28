@@ -10,7 +10,7 @@ spec:
     helm:
       valueFiles: []
     targetRevision: HEAD
-    path: myservice
+    path: k8
   destination:
     server:  'https://kubernetes.default.svc'
     namespace: default
