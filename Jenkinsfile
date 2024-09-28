@@ -66,7 +66,7 @@ pipeline{
                 script{
                    sh """
                          git clone https://github.com/chereddynag/argocd.git
-                         cd k8
+                         cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
                          git config user.name "chereddynag"
