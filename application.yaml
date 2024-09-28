@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/chereddynag/myservice.git
+    repoURL: 'https://github.com/chereddynag/argocd.git'
     targetRevision: HEAD
-    path:
+    path: k8
   destination:
-    server:  https://35.230.44.222
+    server:  'https://kubernetes.default.svc'
     namespace: default
   syncPolicy:
     automated:
