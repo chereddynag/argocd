@@ -66,8 +66,7 @@ pipeline{
                 script{
                    withCredentials([string(credentialsId: 'git_pat', variable: 'GIT_APT')]) {
                    sh """
-                         rm -rf argocd
-                         git clone https://${GIT_APT}@github.com/chereddynag/argocd.git
+                         
                          cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
