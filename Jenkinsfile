@@ -72,6 +72,7 @@ pipeline{
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
                          git config user.name "chereddynag"
                          git config user.email "nagarjuna.chereddy@gmail.com"
+                         git remote set-url origin https://chereddynag:@Ctive@!1988@github.com/chereddynag/argocd.git
                          git push origin 
                       """
                     
