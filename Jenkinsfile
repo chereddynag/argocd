@@ -65,6 +65,7 @@ pipeline{
             steps{
                 script{
                    sh """
+                         rm -rf argocd
                          git clone https://github.com/chereddynag/argocd.git
                          cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
