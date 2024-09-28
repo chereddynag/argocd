@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/chereddynag/myservice.git'
+    repoURL: 'https://github.com/chereddynag/argocd.git'
     helm:
       valueFiles: []
     targetRevision: HEAD
