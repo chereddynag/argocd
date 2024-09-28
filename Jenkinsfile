@@ -67,7 +67,7 @@ pipeline{
                    sh """cd k8
                          sed -i '|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
-                         git push origin ${GITOPS_BRANCH}
+                         git push origin ${GIT_OPS_BRANCH}
                       """
                     
                 }
