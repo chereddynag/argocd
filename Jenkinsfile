@@ -73,7 +73,7 @@ pipeline{
                          git config user.name "chereddynag"
                          git config user.email "nagarjuna.chereddy@gmail.com"
                          git remote set-url origin https://github.com/chereddynag/argocd.git
-                         git push origin 
+                         git push origin main
                       """
                     
                 }
