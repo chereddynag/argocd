@@ -67,7 +67,7 @@ pipeline{
                    withCredentials([usernamePassword(credentialsId: 'git_pat', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                    sh """
                          rm -rf argocd
-                         git clone git@github.com:chereddynag/argocd.git main
+                         git clone git@github.com:chereddynag/argocd.git main -o StrictHostKeyChecking=no
                          cd argocd/k8
                          sed -i 's|image: .*|image: ${GCR_IMAGE_URI}|g' deployment.yaml
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
