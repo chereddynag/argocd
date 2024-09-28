@@ -71,7 +71,7 @@ pipeline{
                          git commit -am "Update image to  ${GCR_IMAGE_URI}"
                          git config user.name "chereddynag"
                          git config user.email "nagarjuna.chereddy@gmail.com"
-                         git push origin ${GIT_OPS_BRANCH}
+                         git push origin 
                       """
                     
                 }
