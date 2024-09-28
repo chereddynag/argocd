@@ -21,7 +21,8 @@ pipeline{
         DOCKER_IMAGE_TAG = "${BUILD_NUMBER}"
         GIT_OPS_BRANCH = 'main'
         ARGOCD_APP_NAME = 'myservice'
-        argocd_token = 'https://34.105.43.92/'
+        argocd_token = 
+        ARGOCD_SERVER = 'https://34.105.43.92/'
 
     }
        
