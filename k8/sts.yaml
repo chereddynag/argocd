@@ -1,46 +1,38 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: web
+  name: mysql
 spec:
-  serviceName: web
-  replicas: 2
+  serviceName: mysql
+  replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: mysql
   template:
     metadata:
       labels:
-        app: web
+        app: mysql
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app: web
-            topologyKey: kubernetes.io/hostname
-      topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: topology.kubernetes.io/zone
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: web
       containers:
-      - name: nginx
-        image: us-central1-docker.pkg.dev/project-753633bf-7369-418c-920/argocd/mydcoker:1.0
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
         ports:
-        - containerPort: 80
+        - containerPort: 3306
         volumeMounts:
-        - name: web-data
-          mountPath: /usr/share/nginx/html
+        - name: mysql-data
+          mountPath: /var/lib/mysql
   volumeClaimTemplates:
   - metadata:
-      name: web-data
+      name: mysql-data
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: standard-rwo
+      storageClassName: premium-rwo
       resources:
         requests:
-          storage: 5Gi
+          storage: 10Gi
