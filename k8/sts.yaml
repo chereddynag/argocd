@@ -1,38 +1,22 @@
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
 metadata:
-  name: mysql
+  name: my-postgres
 spec:
-  serviceName: mysql
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mysql
-  template:
-    metadata:
-      labels:
-        app: mysql
-    spec:
-      containers:
-      - name: mysql
-        image: mysql:8.0
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: password
-        ports:
-        - containerPort: 3306
-        volumeMounts:
-        - name: mysql-data
-          mountPath: /var/lib/mysql
-  volumeClaimTemplates:
-  - metadata:
-      name: mysql-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: standard-rwo
+  postgresVersion: 15
+
+  instances:
+  - name: instance1
+    replicas: 2
+    dataVolumeClaimSpec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: premium-rwo
       resources:
         requests:
           storage: 10Gi
+
+  users:
+  - name: appuser
+    databases:
+    - appdb
