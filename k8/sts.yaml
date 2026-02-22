@@ -32,7 +32,7 @@ spec:
       name: mysql-data
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: premium-rwo
+      storageClassName: standard-rwo
       resources:
         requests:
           storage: 10Gi
