@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sre-cronjob-sa
+  namespace: {{ .Release.Namespace }}
+  annotations:
+      iam.gke.io/gcp-service-account: imagepull@project-753633bf-7369-418c-920.iam.gserviceaccount.com
