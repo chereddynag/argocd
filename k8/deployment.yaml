@@ -12,6 +12,7 @@ spec:
       labels:
         app: argocdapp
     spec:
+      serviceAccountName: sre-cronjob-sa
       containers:
       - name: argocdapp
         image: us-central1-docker.pkg.dev/project-753633bf-7369-418c-920/argocd/mydcoker:1.0
