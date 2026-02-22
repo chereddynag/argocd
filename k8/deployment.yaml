@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: argocdapp
-        image: us-west1-docker.pkg.dev/fluted-volt-428205-p7/chereddy/argocd:117
+        image: us-central1-docker.pkg.dev/project-753633bf-7369-418c-920/argocd/mydcoker:1.0
         resources:
           limits:
             memory: "128Mi"
