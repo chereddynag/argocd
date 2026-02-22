@@ -13,6 +13,13 @@ spec:
       labels:
         app: web
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: web
+            topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx
         image: us-central1-docker.pkg.dev/project-753633bf-7369-418c-920/argocd/mydcoker:1.0
