@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: argocdapp-svc
 spec:
-  type: LoadBalancer
   selector:
     app: argocdapp
   ports:
