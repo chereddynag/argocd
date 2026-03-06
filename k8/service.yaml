@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: argocdapp-svc
 spec:
+  type: NodePort
   selector:
     app: argocdapp
   ports:
